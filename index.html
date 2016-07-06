@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+ <meta charset="UTF-8"> 
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script>
+
+var app = angular.module("FirstApp", []);
+app.controller("User", function($scope){
+  
+$scope.name = "Joaquín";
+$scope.surname = "Caballero";
+$scope.age = 20;
+
+});
+
+app.controller("Colours", function($scope){
+
+
+	$scope.color_list = ["red", "orange", "blue", "yellow", "green", "pink"];
+
+
+});
+
+app.controller("Countries", function($scope){
+
+
+	$scope.country_cities = [{ country:"Uruguay", city:"Montevideo"}, { country:"Argentina", city:"Bs. As."}, {country:"Brasil", city:"Brasilia"}];
+
+
+});
+</script>
+<body ng-app="FirstApp">
+	<div ng-controller="User">
+
+	<span>Nombre: {{ name }}</span><br>
+
+	<span>Apellido: {{ surname }}</span><br>
+
+	<span>Edad: {{ age }}</span><br>
+
+	</div>
+	<div ng-controller="Colours">
+
+	<li ng-repeat="x in color_list" style="color:{{x}}">		
+		{{ x }}
+	</li>
+
+	</div>
+
+	<div ng-controller="Countries">
+
+
+	<span ng-repeat="x in country_cities">
+
+		{{ x.country }} - {{ x.city}}<br>
+
+
+	</div>
+
+</body>
+</html>
