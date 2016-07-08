@@ -5,6 +5,7 @@
 <script>
 
 var app = angular.module("FirstApp", []);
+
 app.controller("User", function($scope){
   
 $scope.name = "Joaquín";
@@ -25,6 +26,28 @@ app.controller("Countries", function($scope){
 
 
 	$scope.country_cities = [{ country:"Uruguay", city:"Montevideo"}, { country:"Argentina", city:"Bs. As."}, {country:"Brasil", city:"Brasilia"}];
+
+
+});
+
+app.controller("Food", function($scope){
+
+	var randomIntFromInterval = function (min,max)
+	{
+    	return Math.floor(Math.random()*(max-min+1)+min);
+	}
+	
+	var randomInt = function() {
+					return Math.floor(Math.random() * (0 - 18 + 1)) + 0;
+				};
+	var food_list = [ "cake", "carrots", "celery", "cheese", "chicken", "catfish", "chips", "chocolate", "chowder", "clams", "coffee", "cookies", "corn", "cupcakes", "crab", "curry", "cereal", "chimichanga" ];
+
+	$scope.current_item = food_list[0];
+
+	$scope.change_item = function(){
+						$scope.current_item = food_list[randomIntFromInterval(0,17)];
+					};
+
 
 
 });
@@ -56,6 +79,14 @@ app.controller("Countries", function($scope){
 
 
 	</div>
+	<div ng-controller="Food">
 
+	<button ng-click="change_item()">Change item</button>
+
+		<span>{{ current_item }}</span>
+
+
+
+	</div>
 </body>
 </html>
